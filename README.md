@@ -4,8 +4,7 @@ A collection of small bits of code that make my life easier on linux
 snippets that help you move around terminal quickly. Just add the snippet you want to `.bashrc` or `.zshrc`. For all the snippets here, it is best to have [FZF](https://github.com/junegunn/fzf) installed on your system. If you want to change the start location, simply change `$HOME` to whatever you want. Note that if you choose to start from root (/), it might take some time to work, since it looks through the entire system.
 ### Jump to any directory from any directory.
 
-```
-require shell
+```shell
 j(){
     fuzz=`fd -Ht d . $HOME | fzf --reverse --height 40%`
     if [ -z $fuzz ]
@@ -21,8 +20,7 @@ j(){
 Now type `j` and press enter. 
 
 ### Open any file from anywhere.
-```
-require shell
+```shell
 o(){
     fuzz=`fzf --reverse --height 40%`
     if [ -z $fuzz ]
