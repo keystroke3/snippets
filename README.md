@@ -5,6 +5,8 @@ snippets that help you move around terminal quickly. Just add the snippet you wa
 ### Jump to any directory from any directory.
 
 ```shell
+#!/bin/sh
+
 j(){
     fuzz=`fd -Ht d . $HOME | fzf --reverse --height 40%`
     if [ -z $fuzz ]
@@ -21,6 +23,8 @@ Now type `j` and press enter.
 
 ### Open any file from anywhere.
 ```shell
+#!/bin/sh
+
 o(){
     fuzz=`fzf --reverse --height 40%`
     if [ -z $fuzz ]
@@ -57,6 +61,8 @@ If you have a list of files and directories all in one text file and wan to sepe
 in python:
 
 ```python
+#!/bin/python3
+
 working_dir = "Documents/teams/"
 with open(working_dir+"original.txt", "r") as full_list:
     with open(working_dir+"only_dirs.txt", "a") as dirs, \
