@@ -50,3 +50,25 @@ text )
 ```
 Nohup is there only to allow you to keep using you terminal after the program has lauched.
 
+## File Manipulaton
+### How to separate a list of files and directories stored in a text file
+
+If you have a list of files and directories all in one text file and wan to seperate them to different files Here is what you can do 
+in python:
+
+```python
+working_dir = "Documents/teams/"
+with open(working_dir+"original.txt", "r") as full_list:
+    with open(working_dir+"only_dirs.txt", "a") as dirs, \
+            open(working_dir+"only_files.txt", "a") as files:
+        lines = full_list.readlines()
+        for line in lines:
+            if "." not in line[-6:] or line[-1:] == "/":
+                dirs.write(line)
+                print(f"... {line[-50:]} is a directory")
+            else:
+                files.write(line)
+                print(f"... {line[-50:]} is a file")
+```
+Looking at the code above, we first start by specifiying the directory where our files are and where they will be stored. This can be ignored if you are using this python file in the same directory as the files in question. We the the `open` to open file with the list of paths and new files in append mode. We then read the paths file and store the contents in a `lines` variable. We then iterate through the the lines and check if the lines end with a file extension. The line `if "." not in line[-6:]:` just checks if the last few characters have a "." (dot) in them. This is because all file extensions are of the form `.*` where * can be any character or set of characters. Incase the line ends with `/` then it is treated as a directory.  
+if a line has no file extension or ends with "/" then it is assumed to be a directory and is adde to the `only_dirs.txt` file. otherwise, it is placed in the `only_files.txt` file. The print statements are just for feedback and can be ignored.
